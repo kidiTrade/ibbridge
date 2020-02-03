@@ -55,10 +55,7 @@ jobs:
 
       - name: Push image
         run: |
-          # Use the git repository name as the default image name
-          DEFAULT_IMAGE_NAME=$(echo "${{ github.repository }}" | awk -F/ '{print $NF}')
-
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/${IMAGE_NAME:-$DEFAULT_IMAGE_NAME}
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}
 
           # Ensure the image repository is lowercase only
           IMAGE_ID=$(echo $IMAGE_ID | tr '[:upper:]' '[:lower:]')
