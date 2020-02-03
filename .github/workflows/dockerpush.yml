@@ -55,7 +55,7 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
 
           # Ensure the image repository is lowercase only
           IMAGE_ID=$(echo $IMAGE_ID | tr '[:upper:]' '[:lower:]')
