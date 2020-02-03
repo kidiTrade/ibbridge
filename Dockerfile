@@ -14,8 +14,7 @@ FROM base as build
 COPY *.proto ./
 RUN set -ex \
     && pip install --no-cache-dir betterproto[compiler] \
-    && python3 -m grpc_tools.protoc -I. --python_out=. --python_grpc_out=. ib_loader.proto \
-    && ls -l
+    && python3 -m grpc_tools.protoc -I. --python_out=. --python_grpc_out=. ib_loader.proto
 
 FROM base
 
