@@ -6,8 +6,7 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
 service IbLoader {
-  rpc GetStockHistoricalData(GetStockHistoricalDataRequest)
-      returns (stream Bar) {}
+  rpc GetStockHistoricalData(GetStockHistoricalDataRequest) returns (stream Bar) {}
 }
 
 message GetStockHistoricalDataRequest {
