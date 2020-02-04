@@ -8,8 +8,8 @@ from google.protobuf.timestamp_pb2 import Timestamp
 from grpclib.server import Server, Stream
 from grpclib.utils import graceful_exit
 from ib_insync import IB, Stock
-from ib_loader_grpc import IbLoaderBase
-from ib_loader_pb2 import Bar, GetStockHistoricalDataRequest
+from ibbridge_grpc import IbLoaderBase
+from ibbridge_pb2 import Bar, GetStockHistoricalDataRequest
 
 
 def timestamp_from_datetime(dt):

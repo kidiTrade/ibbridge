@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Generated protoc files
-ib_loader_*.py
+ibbridge_*.py
