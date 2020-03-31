@@ -8,7 +8,7 @@ from google.protobuf.timestamp_pb2 import Timestamp
 from grpclib.server import Server, Stream
 from grpclib.utils import graceful_exit
 from ib_insync import IB, Stock
-from ibbridge_grpc import IbLoaderBase
+from ibbridge_grpc import IbBridgeBase
 from ibbridge_pb2 import Bar, GetStockHistoricalDataRequest
 
 
@@ -24,7 +24,7 @@ def duration_from_timedelta(delta):
     return dr
 
 
-class IbLoaderServer(IbLoaderBase):
+class IbBridgeServer(IbBridgeBase):
     def __init__(self, ib):
         self.ib = ib
 
@@ -81,7 +81,7 @@ async def main(options):
     ib = IB()
     ib.disconnectedEvent += onDisconnected
     await ib.connectAsync(options.ib_host, options.ib_port)
-    server = Server([IbLoaderServer(ib)])
+    server = Server([IbBridgeServer(ib)])
     with graceful_exit([server]):
         await server.start(options.http_host, options.http_port)
         print(f"Serving on {options.http_host}:{options.http_port}")
