@@ -45,7 +45,7 @@ class IbBridgeServer(IbBridgeBase):
                 contract,
                 endDateTime=endDate,
                 durationStr="10 D",
-                barSizeSetting="5 min",
+                barSizeSetting="5 mins",
                 useRTH=True,
                 whatToShow="TRADES",
                 formatDate=2,
