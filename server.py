@@ -45,7 +45,7 @@ class IbLoaderServer(IbLoaderBase):
                 contract,
                 endDateTime=endDate,
                 durationStr="10 D",
-                barSizeSetting="1 min",
+                barSizeSetting="5 min",
                 useRTH=True,
                 whatToShow="TRADES",
                 formatDate=2,
@@ -60,7 +60,7 @@ class IbLoaderServer(IbLoaderBase):
                 await stream.send_message(
                     Bar(
                         timestamp=timestamp_from_datetime(bar.date),
-                        duration=duration_from_timedelta(timedelta(minutes=1)),
+                        duration=duration_from_timedelta(timedelta(minutes=5)),
                         open=bar.open,
                         high=bar.high,
                         low=bar.low,
