@@ -47,7 +47,7 @@ class IbBridgeServer(IbBridgeBase):
         while True:
             # Compare the date as the head timestamp does not
             # always matches what we get on the last request
-            if endDate is not None and head_ts.date() == endDate.date():
+            if endDate is not None and head_ts.date() >= endDate.date():
                 break
 
             bars = await self.ib.reqHistoricalDataAsync(
