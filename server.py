@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import asyncio
 import sys
 from datetime import datetime, timedelta
@@ -39,8 +41,15 @@ class IbBridgeServer(IbBridgeBase):
         if endDate == datetime(1970, 1, 1, 0, 0):
             endDate = None
 
+        head_ts = await self.ib.reqHeadTimeStampAsync(contract, useRTH=True, whatToShow="TRADES", formatDate=2)
+
         print(contract, endDate)
         while True:
+            # Compare the date as the head timestamp does not
+            # always matches what we get on the last request
+            if endDate is not None and head_ts.date() == endDate.date():
+                break
+
             bars = await self.ib.reqHistoricalDataAsync(
                 contract,
                 endDateTime=endDate,
